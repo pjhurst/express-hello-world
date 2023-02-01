@@ -9,6 +9,7 @@ var debug = require("debug")("apple-pay");
 const https = require("https");
 var merchant = require("./merchant");
 var payment = require("./payment");
+const port = process.env.PORT || 3001;
 
 var authorizedOrigins = ""; //process.env.AUTHORIZED_ORIGINS.split(",");
 //"start": "forever start server/index.js && forever logs -f 0",
@@ -25,24 +26,24 @@ app.use(bodyParser.json());
 app.post("/merchant-validate", merchant.validate);
 app.post("/payment-authorize", payment.authorize);
 app.get(
-	"/.well-known/apple-developer-merchantid-domain-association.txt",
-	function (req, res) {
-		res.send(
-			fs.readFileSync("./apple-developer-merchantid-domain-association.txt")
-		);
-	}
+  "/.well-known/apple-developer-merchantid-domain-association.txt",
+  function (req, res) {
+    res.send(
+      fs.readFileSync("./apple-developer-merchantid-domain-association.txt")
+    );
+  }
 );
 app.use(express.static("public"));
 const httpsOptions = {
-	key: fs.readFileSync("./key.pem"),
-	cert: fs.readFileSync("./cert.pem"),
-	requestCert: false,
-	rejectUnauthorized: false,
+  key: fs.readFileSync("./key.pem"),
+  cert: fs.readFileSync("./cert.pem"),
+  requestCert: false,
+  rejectUnauthorized: false,
 };
 
 // app.listen(process.env.PORT || 4000, function () {
 // 	debug("Express is listening.");
 // });
-const server = https.createServer(httpsOptions, app).listen(4000, () => {
-	console.log("server running at " + 4000);
+const server = https.createServer(httpsOptions, app).listen(port, () => {
+  console.log("server running at " + port);
 });
