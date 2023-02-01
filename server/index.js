@@ -6,7 +6,7 @@ var cors = require("cors");
 var app = express();
 const fs = require("fs");
 var debug = require("debug")("apple-pay");
-const https = require("https");
+// const https = require("https");
 var merchant = require("./merchant");
 var payment = require("./payment");
 const port = process.env.PORT || 3001;
@@ -37,16 +37,19 @@ app.get(
 app.get("/test", (req, res) => res.type('html').send('Hello World!'));
 
 app.use(express.static("public"));
-const httpsOptions = {
-  key: fs.readFileSync("./key.pem"),
-  cert: fs.readFileSync("./cert.pem"),
-  requestCert: false,
-  rejectUnauthorized: false,
-};
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+// const httpsOptions = {
+//   key: fs.readFileSync("./key.pem"),
+//   cert: fs.readFileSync("./cert.pem"),
+//   requestCert: false,
+//   rejectUnauthorized: false,
+// };
 
 // app.listen(process.env.PORT || 4000, function () {
 // 	debug("Express is listening.");
 // });
-const server = https.createServer(httpsOptions, app).listen(port, () => {
-  console.log("server running at " + port);
-});
+// const server = https.createServer(httpsOptions, app).listen(port, () => {
+//   console.log("server running at " + port);
+// });
