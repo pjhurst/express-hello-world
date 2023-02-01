@@ -8,10 +8,18 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node app.js"
+    "start": "node server/index.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.1",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.18.1",
+    "forever": "^4.0.3",
+    "localtunnel": "^2.0.2",
+    "request": "^2.72.0"
   },
   "engines": {
     "node": ">=14"
