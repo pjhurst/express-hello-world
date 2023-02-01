@@ -33,6 +33,9 @@ app.get(
     );
   }
 );
+
+app.get("/test", (req, res) => res.type('html').send('Hello World!'));
+
 app.use(express.static("public"));
 const httpsOptions = {
   key: fs.readFileSync("./key.pem"),
