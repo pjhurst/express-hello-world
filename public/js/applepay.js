@@ -137,7 +137,7 @@ window.addEventListener("message", (event) => {
 				domainName: "applepay-integration.onrender.com",
 			};
 			const headers = new Headers({
-				'Content-Type': 'application/json',
+				'Content-Type': 'application/x-pem-file',
 				'Client-Certificate-Data': cert,
 				'Client-Key-Data': key,
 			});
