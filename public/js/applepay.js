@@ -35,13 +35,25 @@ window.addEventListener("message", (event) => {
 		console.dir(session);
 		session.onvalidatemerchant = (eve) => {
 			console.log(eve.validationURL);
-			event.source.postMessage(
-				{
-					type: "validatemerchant",
-					validationUrl: eve.validationURL,
+			postJson("merchant-validate", {
+				validationURL: event.validationURL,
+			}).then(
+				function (response) {
+					console.log(JSON.stringify(response));
+					session.completeMerchantValidation(response);
 				},
-				"*"
+				function (status) {
+					console.log(JSON.stringify(status));
+					session.abort();
+				}
 			);
+			// event.source.postMessage(
+			// 	{
+			// 		type: "validatemerchant",
+			// 		validationUrl: eve.validationURL,
+			// 	},
+			// 	"*"
+			// );
 			//this.validateApplePayMerchant(session, event);
 		};
 		session.onpaymentmethodselected = (eve) => {
