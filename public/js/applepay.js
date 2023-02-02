@@ -1,4 +1,21 @@
 var session = null;
+function postJson (url, data) {
+	var json = data;
+	if (typeof data === 'object') {
+		json = JSON.stringify(data);
+	} else if (typeof data !== 'string') {
+		throw new Error('Data must be an object or a JSON string.');
+	}
+	return fetch(url, {
+		method: 'POST',
+		credentials: 'include',
+		headers: {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		},
+		body: json
+	}).then(handleResponse);
+}
 window.addEventListener("message", (event) => {
 	var request = null;
 	if (event.data.type === "applepayabort") {
