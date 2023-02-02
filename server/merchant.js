@@ -79,8 +79,8 @@ function validate (req, res) {
 		url: req.body.validationURL,
 		json: true,
 		body: {
-			merchantIdentifier: "merchant.com.4ta.checkout-live-testlan",
-			displayName:"4ta",
+			merchantIdentifier: "merchant.com.onrender.applepay-integration",
+			displayName:"poctest",
 			domainName: "applepay-integration.onrender.com"
 		},
 		cert: applePem,
