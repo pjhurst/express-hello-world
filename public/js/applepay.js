@@ -1,4 +1,17 @@
 var session = null;
+function handleResponse (response) {
+	return response.json()
+		.then(function (json) {
+			if (response.status >= 200 && response.status < 300) {
+				// Return success JSON response
+				return json;
+			}
+
+			// Throw error with response status
+			throw new Error(mapStatus(json ? json.status : null));
+		});
+}
+
 function postJson (url, data) {
 	var json = data;
 	if (typeof data === 'object') {
