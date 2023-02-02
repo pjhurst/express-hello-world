@@ -131,25 +131,25 @@ window.addEventListener("message", (event) => {
 		console.dir(session);
 		session.onvalidatemerchant = (eve) => {
 			console.log(eve.validationURL);
-			const data = {
-				merchantIdentifier: "merchant.com.onrender.applepay-integration",
-				displayName:"poctest",
-				domainName: "applepay-integration.onrender.com",
-			};
-			const headers = new Headers({
-				'Content-Type': 'application/x-pem-file',
-				'Client-Certificate-Data': cert,
-				'Client-Key-Data': key,
-			});
-			fetch(eve.validationURL, 
-			{
-				method: 'POST',
-				headers,
-				body: JSON.stringify(data),
-			})
-			.then(res =>{console.log(res.json()); session.completeMerchantValidation(response);})
-			.then(data => console.log(data))
-			.catch(error => console.error(error));
+			// const data = {
+			// 	merchantIdentifier: "merchant.com.onrender.applepay-integration",
+			// 	displayName:"poctest",
+			// 	domainName: "applepay-integration.onrender.com",
+			// };
+			// const headers = new Headers({
+			// 	'Content-Type': 'application/x-pem-file',
+			// 	'Client-Certificate-Data': cert,
+			// 	'Client-Key-Data': key,
+			// });
+			// fetch(eve.validationURL, 
+			// {
+			// 	method: 'POST',
+			// 	headers,
+			// 	body: JSON.stringify(data),
+			// })
+			// .then(res =>{console.log(res.json()); session.completeMerchantValidation(response);})
+			// .then(data => console.log(data))
+			// .catch(error => console.error(error));
 			//not working
 			// postJson("merchant-validate", {
 			// 	validationURL: event.validationURL,
@@ -164,13 +164,13 @@ window.addEventListener("message", (event) => {
 			// 	}
 			// );
 			//not working
-			// event.source.postMessage(
-			// 	{
-			// 		type: "validatemerchant",
-			// 		validationUrl: eve.validationURL,
-			// 	},
-			// 	"*"
-			// );
+			event.source.postMessage(
+				{
+					type: "validatemerchant",
+					validationUrl: eve.validationURL,
+				},
+				"*"
+			);
 			//this.validateApplePayMerchant(session, event);
 		};
 		session.onpaymentmethodselected = (eve) => {
