@@ -187,6 +187,7 @@ window.addEventListener("message", (event) => {
 
 		session.onpaymentauthorized = (eve) => {
 			console.log("onpaymentauthorized");
+			console.log(JSON.stringify(eve.payment));
 			event.source.postMessage(
 				{
 					type: "paymentauthorized",
