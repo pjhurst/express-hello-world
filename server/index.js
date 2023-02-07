@@ -31,6 +31,9 @@ app.post("/payment-authorize", payment.authorize);
 app.get("/test", (req, res) => res.send(
     fs.readFileSync("./apple-developer-merchantid-domain-association.txt")
   ));
+app.get("/.well-known/apple-developer-merchantid-domain-association",(req, res) => res.send(
+    fs.readFileSync("./apple-developer-merchantid-domain-association.txt")
+  ));
 app.get("/.well-known/apple-developer-merchantid-domain-association.txt",(req, res) => res.send(
     fs.readFileSync("./apple-developer-merchantid-domain-association.txt")
   ));
