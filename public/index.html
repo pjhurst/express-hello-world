@@ -15,8 +15,7 @@
 		<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 		<script src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch"></script>
 		<script src="https://checkout-live-testlan.4ta.com/v1/js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-		<script src="https://applepay.cdn-apple.com/jsapi/v1/apple-pay-sdk.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>	
 		
 	</head>
 	<body>
@@ -24,9 +23,9 @@
 			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
 
-		<h1 class="site-title">Web Payments Example</h1>
+		<h1 class="site-title">Apple pay stage integration test site</h1>
 		<br />
-		<button id="submit2" 
+		<!-- <button id="submit2" 
 		api_login_id="A3BF59F84D"
 		 billing_name="" billing_name_attr="" billing_company_name="" billing_company_name_attr="" 
 		 version_number="1.0" 
@@ -35,7 +34,18 @@
 		   class="fortebtn" data-id="modal0"
 		    key="HOHHOm5XLkuuVH" method="sale" 
 			swipe="false" total_amount="5"
-			>Submit</button>
+			>Submit</button> -->
+
+			<button id="submit2" 
+			api_login_id="yuYcsEasO"
+			 billing_name="" billing_name_attr="" billing_company_name="" billing_company_name_attr="" 
+			 version_number="1.0" 
+			 collect_shipping_address="true"
+			  callback="oncallback"
+			   class="fortebtn" data-id="modal0"
+				key="9gD81TsQdVdLsX" method="sale" 
+				swipe="false" total_amount="5"
+				>Submit</button>
 
 		<!-- <h3 class="site-description">Payment Request API &amp; Apple Pay for the Web</h3>
 		<div class="products">
@@ -146,8 +156,7 @@
 		'' +
 		'|' +
 		'';
-	var key = "HOHHOm5XLkuuVH";
-	alert(key);
+	var key = "9gD81TsQdVdLsX";
 	return hex_hmac_md5(key, data);
 	
 }
